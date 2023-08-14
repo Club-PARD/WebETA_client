@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import FandomRanking from "../components/Fandom/FandomRanking";
-import FandomRooms from "../components/Fandom/FandomRooms";
-import MyPage from "../components/Profile/MyPage";
 import Logo from "../asset/img/Logo.png";
+import { Link } from "react-router-dom";
+import { content, useTabs } from "../components/useTabs";
 
 function HomePage() {
   const HomePageComponent = styled.div`
@@ -31,18 +30,56 @@ function HomePage() {
     background: var(--purple-10, #eeebf6);
     color: var(--purple-100, #5639a6);
     font-weight: bold;
+    cursor: pointer;
   `;
+
+  const NoSelectTab = styled.button`
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #ababab;
+    width: 50%;
+    padding: 10px 50px;
+    background-color: transparent;
+  `;
+
+  const SelectTab = styled.button`
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px solid var(--purple-100, #5639a6);
+    color: var(--purple-100, #5639a6);
+    width: 50%;
+    padding: 10px 50px;
+    background-color: transparent;
+  `;
+
+  const { currentItem, changeItem } = useTabs(0, content);
 
   return (
     <HomePageComponent>
       <Row>
-        <img src={Logo} />
-        <LoginButton>로그인</LoginButton>
+        <img src={Logo} alt="EveryFandom Logo" />
+        <Link to={`/Login`}>
+          <LoginButton>로그인</LoginButton>
+        </Link>
       </Row>
-      <Login />
-      <MyPage />
-      <FandomRanking />
-      <FandomRooms />
+      <Row style={{ marginTop: "6px" }}>
+        {content.map((section, index) =>
+          currentItem === section ? (
+            <SelectTab onClick={() => changeItem(index)}>
+              {section.tab}
+            </SelectTab>
+          ) : (
+            <NoSelectTab onClick={() => changeItem(index)}>
+              {section.tab}
+            </NoSelectTab>
+          )
+        )}
+      </Row>
+      <div style={{ marginTop: "32px", width: "100%" }}>
+        {currentItem.content}
+      </div>
     </HomePageComponent>
   );
 }
