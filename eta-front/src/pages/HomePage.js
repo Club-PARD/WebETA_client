@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import logo from "../asset/img/Logo.png";
+import logo from "../asset/img/Logo.svg";
 import { Link } from "react-router-dom";
-import { content, useTabs } from "../components/useTabs";
+import { content, useTabs } from "../components/Home/useTabs";
 import profile from "../asset/img/Profile.svg";
 
 let currentUser = null;
@@ -80,14 +80,14 @@ function HomePage() {
     <HomePageComponent>
       <Row>
         <img src={logo} alt="EveryFandom Logo" />
-        {currentUser === null ? (
+        {currentUser !== null ? (
           <Link to={`/Login`}>
             <LoginButton>로그인</LoginButton>
           </Link>
         ) : (
           <Profile>
             <Row>
-              <img src={profile} alt="Profile photo" />
+              <img src={profile} alt="Profile" />
               <span
                 style={{
                   color: `var(--purple-100, #5639A6)`,
