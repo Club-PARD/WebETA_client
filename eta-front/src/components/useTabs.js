@@ -1,10 +1,13 @@
 import { useState } from "react";
-import Home from "./Home";
+import BeforeHome from "./BeforeHome";
+import AfterHome from "./AfterHome";
+
+let currentUser = null;
 
 const content = [
   {
     tab: "홈",
-    content: <Home />,
+    content: currentUser === null ? <BeforeHome /> : <AfterHome />,
   },
   {
     tab: "커뮤니티",

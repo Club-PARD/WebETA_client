@@ -1,16 +1,11 @@
 import { styled } from "styled-components";
 import join from "../asset/img/Button_Join.png";
-import rankBTS from "../asset/img/Rank_BTS.png";
-import up from "../asset/img/up.png";
-import down from "../asset/img/down.png";
 import rank17 from "../asset/img/Rank_Seventeen.png";
-import rankEXO from "../asset/img/Rank_EXO.png";
-import fandomEXO from "../asset/img/FandomList_EXO.png";
+import up from "../asset/img/up.png";
 import fandom17 from "../asset/img/FandomList_Seventeen.png";
-import fandomIU from "../asset/img/FandomList_IU.png";
-import fandomNJ from "../asset/img/FandomList_NewJeans.png";
-import fandomBTS from "../asset/img/FandomList_BTS.png";
-import fandomIVE from "../asset/img/FandomList_IVE.png";
+import fandom17_1 from "../asset/img/MyFandomList_Seventeen1.png";
+import fandom17_2 from "../asset/img/MyFandomList_Seventeen2.png";
+import fandom17_3 from "../asset/img/MyFandomList_Seventeen3.png";
 
 const Row = styled.div`
   display: flex;
@@ -53,16 +48,19 @@ const Title = styled.span`
   }
 `;
 
-const Hr = styled.hr`
-  border: 1px solid #eeebf6;
-  width: 100%;
-`;
-
 const Div = styled.div`
   width: 375px;
   height: 16px;
   background-color: var(--gray-10, #f8f9fa);
   margin: 0 -24px;
+`;
+
+const CreateButton = styled.button`
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--purple-100, #5639a6);
+  background-color: transparent;
 `;
 
 const FandomList = styled.div`
@@ -137,56 +135,14 @@ const Description = styled.div`
   font-weight: 500;
 `;
 
-const Home = () => {
+const AfterHome = () => {
   return (
     <div>
       <FandomRank>
         <Row style={{ justifyContent: "space-between" }}>
-          <Title>🏆 팬덤 랭킹</Title>
+          <Title>내 팬덤 랭킹</Title>
           <img src={join} alt="Join Button" />
         </Row>
-        <Row style={{ marginTop: "15px" }}>
-          <Column>
-            <div style={{ fontSize: "24px", fontWeight: "600" }}>1</div>
-            <div
-              style={{
-                color: "var(--gray-30, #ABABAB)",
-                fontWeight: "700",
-                fontSize: "12px",
-              }}
-            >
-              -
-            </div>
-          </Column>
-          <img
-            src={rankBTS}
-            alt="BTS Profile"
-            width="44px"
-            height="44px"
-            style={{ borderRadius: "50%", marginLeft: "22px" }}
-          />
-          <span
-            style={{
-              flexGrow: 1,
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "10px",
-            }}
-          >
-            방탄소년단
-          </span>
-          <span
-            style={{
-              color: "var(--gray-30, #ABABAB)",
-              textAlign: "right",
-              fontSize: "12px",
-              fontWeight: "500",
-            }}
-          >
-            17,432회
-          </span>
-        </Row>
-        <Hr />
         <Row style={{ marginTop: "15px" }}>
           <Column>
             <div style={{ fontSize: "24px", fontWeight: "600" }}>2</div>
@@ -228,59 +184,16 @@ const Home = () => {
             12,879회
           </span>
         </Row>
-        <Hr />
-        <Row style={{ marginTop: "15px" }}>
-          <Column>
-            <div style={{ fontSize: "24px", fontWeight: "600" }}>3</div>
-            <div
-              style={{
-                color: "var(--gray-30, #ABABAB)",
-                fontWeight: "500",
-                fontSize: "12px",
-              }}
-            >
-              <img src={down} alt="down" />1
-            </div>
-          </Column>
-          <img
-            src={rankEXO}
-            alt="Seventeen Profile"
-            width="44px"
-            height="44px"
-            style={{ borderRadius: "50%", marginLeft: "22px" }}
-          />
-          <span
-            style={{
-              flexGrow: 1,
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "10px",
-            }}
-          >
-            엑소
-          </span>
-          <span
-            style={{
-              color: "var(--gray-30, #ABABAB)",
-              textAlign: "right",
-              fontSize: "12px",
-              fontWeight: "500",
-            }}
-          >
-            9,473회
-          </span>
-        </Row>
       </FandomRank>
       <Div style={{ marginTop: "32px" }} />
-      <Title style={{ marginTop: "24px" }}>💬 전체 팬덤방</Title>
+      <Row style={{ justifyContent: "space-between", marginTop: "24px" }}>
+        <Title>
+          <span style={{ color: `var(--purple-100, #5639a6)` }}>세븐틴</span>{" "}
+          팬덤방
+        </Title>
+        <CreateButton>+ 방 만들기</CreateButton>
+      </Row>
       <FandomList>
-        <FandomCard style={{ backgroundImage: `url(${fandomEXO})` }}>
-          <Gradient />
-          <Tag>봉사</Tag>
-          <Member>2793명 참여중</Member>
-          <RoomTitle>엑소엘 봉사 모임</RoomTitle>
-          <Description>유기견 봉사가실 분 모집합...</Description>
-        </FandomCard>
         <FandomCard style={{ backgroundImage: `url(${fandom17})` }}>
           <Gradient />
           <Tag>조공</Tag>
@@ -288,37 +201,30 @@ const Home = () => {
           <RoomTitle>세븐틴 조공방</RoomTitle>
           <Description>콘서트 조공하실 분 들어오...</Description>
         </FandomCard>
-        <FandomCard style={{ backgroundImage: `url(${fandomIU})` }}>
+        <FandomCard style={{ backgroundImage: `url(${fandom17_1})` }}>
           <Gradient />
           <Tag>조공</Tag>
-          <Member>766명 참여중</Member>
-          <RoomTitle>아이유 생일 조공</RoomTitle>
-          <Description>곧 생일 기념으로 촬영장...</Description>
+          <Member>32명 참여중</Member>
+          <RoomTitle>셉틴 서울콘 서포트</RoomTitle>
+          <Description>7월 22일 서울 콘서트 스...</Description>
         </FandomCard>
-        <FandomCard style={{ backgroundImage: `url(${fandomNJ})` }}>
-          <Gradient />
-          <Tag>조공</Tag>
-          <Member>327명 참여중</Member>
-          <RoomTitle>뉴진스 커피차</RoomTitle>
-          <Description>뮤비 스태프들 서포트해요...</Description>
-        </FandomCard>
-        <FandomCard style={{ backgroundImage: `url(${fandomBTS})` }}>
+        <FandomCard style={{ backgroundImage: `url(${fandom17_2})` }}>
           <Gradient />
           <Tag>기부</Tag>
-          <Member>25명 참여중</Member>
-          <RoomTitle>BTS 기부방</RoomTitle>
-          <Description>이번 수해지역 기부를 할까...</Description>
+          <Member>1255명 참여중</Member>
+          <RoomTitle>일본 진출 기념 기부</RoomTitle>
+          <Description>드디어 일본 진출한 우리 셉...</Description>
         </FandomCard>
-        <FandomCard style={{ backgroundImage: `url(${fandomIVE})` }}>
+        <FandomCard style={{ backgroundImage: `url(${fandom17_3})` }}>
           <Gradient />
           <Tag>모임</Tag>
-          <Member>1명 참여중</Member>
-          <RoomTitle>수원 줌마팬 모임</RoomTitle>
-          <Description>수원 사시는 아이브 줌마팬...</Description>
+          <Member>6명 참여중</Member>
+          <RoomTitle>쿱스 시사회 같이 가요</RoomTitle>
+          <Description>인천 시사회 8/19(토) 오후...</Description>
         </FandomCard>
       </FandomList>
     </div>
   );
 };
 
-export default Home;
+export default AfterHome;

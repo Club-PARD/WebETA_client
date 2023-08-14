@@ -1,7 +1,10 @@
 import styled from "styled-components";
-import Logo from "../asset/img/Logo.png";
+import logo from "../asset/img/Logo.png";
 import { Link } from "react-router-dom";
 import { content, useTabs } from "../components/useTabs";
+import profile from "../asset/img/Profile.svg";
+
+let currentUser = null;
 
 function HomePage() {
   const HomePageComponent = styled.div`
@@ -54,15 +57,61 @@ function HomePage() {
     background-color: transparent;
   `;
 
+  const Profile = styled.span`
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    z-index: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -5px;
+      bottom: -3px; /* 밑줄 위치 조절 */
+      width: 110%;
+      border-bottom: 12px solid var(--purple-10, #eeebf6); /* 밑줄 스타일 및 두께 조절 */
+      z-index: -1;
+    }
+  `;
+
   const { currentItem, changeItem } = useTabs(0, content);
 
   return (
     <HomePageComponent>
       <Row>
-        <img src={Logo} alt="EveryFandom Logo" />
-        <Link to={`/Login`}>
-          <LoginButton>로그인</LoginButton>
-        </Link>
+        <img src={logo} alt="EveryFandom Logo" />
+        {currentUser === null ? (
+          <Link to={`/Login`}>
+            <LoginButton>로그인</LoginButton>
+          </Link>
+        ) : (
+          <Profile>
+            <Row>
+              <img src={profile} alt="Profile photo" />
+              <span
+                style={{
+                  color: `var(--purple-100, #5639A6)`,
+                  marginLeft: "4px",
+                  fontSize: "14px",
+                  fontWeight: "700",
+                }}
+              >
+                조슈아가 나라다
+              </span>
+              <span
+                style={{
+                  color: `var(--gray-30, #ABABAB)`,
+                  marginLeft: "4px",
+                  fontSize: "14px",
+                  fontWeight: "600",
+                }}
+              >
+                {" "}
+                님
+              </span>
+            </Row>
+          </Profile>
+        )}
       </Row>
       <Row style={{ marginTop: "6px" }}>
         {content.map((section, index) =>
