@@ -232,7 +232,9 @@ const AfterHome = () => {
           <span style={{ color: `var(--purple-100, #5639a6)` }}>세븐틴</span>{" "}
           팬덤방
         </Title>
-        <CreateButton>+ 방 만들기</CreateButton>
+        <Link to={`/MakeRoom`}>
+          <CreateButton>+ 방 만들기</CreateButton>
+        </Link>
       </Row>
       <FandomList>
         {data.map((room, index) => (

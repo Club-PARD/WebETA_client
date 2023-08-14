@@ -225,6 +225,8 @@ function FandomRanking() {
           <VoteEnabled
             src={voteEnabled}
             alt="Vote Enabled"
+            onTouchStart={onClickDownVote}
+            onTouchEnd={onClickUpVote}
             onMouseDown={onClickDownVote}
             onMouseUp={onClickUpVote}
             isClicked={isClicked}
