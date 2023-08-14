@@ -16,6 +16,7 @@ function HomePage() {
     max-width: 375px;
     padding: 32px 24px;
     margin: 0 auto;
+    overflow: hidden;
   `;
 
   const Row = styled.div`
@@ -126,7 +127,7 @@ function HomePage() {
           )
         )}
       </Row>
-      <div style={{ marginTop: "32px", width: "100%" }}>
+      <div style={{ marginTop: "24px", width: "100%" }}>
         {currentItem.content}
       </div>
     </HomePageComponent>

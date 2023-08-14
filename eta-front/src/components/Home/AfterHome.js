@@ -87,7 +87,7 @@ const Div = styled.div`
   width: 375px;
   height: 16px;
   background-color: var(--gray-10, #f8f9fa);
-  margin: 0 -24px;
+  margin: 32px -24px 0 0;
 `;
 
 const CreateButton = styled.button`
@@ -226,7 +226,7 @@ const AfterHome = () => {
           </span>
         </Row>
       </FandomRank>
-      <Div style={{ marginTop: "32px" }} />
+      <Div />
       <Row style={{ justifyContent: "space-between", marginTop: "24px" }}>
         <Title>
           <span style={{ color: `var(--purple-100, #5639a6)` }}>세븐틴</span>{" "}

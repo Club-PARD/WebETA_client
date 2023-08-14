@@ -1,6 +1,8 @@
 import { useState } from "react";
 import BeforeHome from "./BeforeHome";
 import AfterHome from "./AfterHome";
+import BeforeCommunity from "./BeforeCommunity";
+import AfterCommunity from "./AfterCommunity";
 
 let currentUser = null;
 
@@ -11,7 +13,7 @@ const content = [
   },
   {
     tab: "커뮤니티",
-    content: "I'm the content of the Section 2",
+    content: currentUser !== null ? <BeforeCommunity /> : <AfterCommunity />,
   },
 ];
 
