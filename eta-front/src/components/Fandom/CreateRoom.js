@@ -115,7 +115,7 @@ const Modal = styled(modal)`
   width: 343px;
   border-radius: 10px;
   background-color: #fff;
-  margin: 30% auto;
+  margin: 50% auto;
   padding: 24px;
 `;
 
@@ -213,11 +213,11 @@ function CreateRoom() {
       boardTitle: boardTitle,
       boardDescription: boardDescription,
       boardCategory: boardCategory,
-      boardImage: image,
+      boardImage: `url(${image})`,
       boardWriterId: "1234",
       boardWriterEmail: "asdf",
       boardWriterNickname: "asdf",
-      boardWriterFanclub: "아이유",
+      boardWriterFanclub: "세븐틴",
     };
     const header = {
       Authorization: "Bearer " + localStorage.getItem("token"),
@@ -228,9 +228,8 @@ function CreateRoom() {
         headers: header,
       })
       .then((response) => {
-        const responseData = response.data;
-        console.log(responseData);
-        if (!responseData.result) {
+        console.log(response.data);
+        if (!response.data.result) {
           alert("보드 생성에 실패했습니다.");
           return;
         }
@@ -355,12 +354,14 @@ function CreateRoom() {
             style={{ cursor: "not-allowed" }}
           />
         ) : (
-          <img
-            src={enabledButton}
-            alt="Enabled Button"
-            style={{ cursor: "pointer" }}
-            onClick={onClickCreate}
-          />
+          <Link to={`../`}>
+            <img
+              src={enabledButton}
+              alt="Enabled Button"
+              style={{ cursor: "pointer" }}
+              onClick={onClickCreate}
+            />
+          </Link>
         )}
       </Column>
     </CreateRoomPageComponent>
