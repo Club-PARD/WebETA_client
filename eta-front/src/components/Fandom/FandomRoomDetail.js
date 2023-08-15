@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import back from "../../asset/img/Back.svg";
 import button_enter from "../../asset/img/Button_Enter.svg";
@@ -64,6 +64,7 @@ const Member = styled.div`
 
 function FandomRoomDetail() {
   const { index } = useParams();
+  const [board, setBoard] = useState({});
 
   useEffect(() => {
     const header = {
@@ -76,7 +77,7 @@ function FandomRoomDetail() {
         headers: header,
       })
       .then((response) => {
-        console.log(response.data);
+        setBoard(response.data.data);
       });
   }, [index]);
 
@@ -100,22 +101,22 @@ function FandomRoomDetail() {
       />
       <Column>
         <Row style={{ marginTop: "22px", gap: "4px" }}>
-          <Tag>{list[index].tag}</Tag>
-          <Member>{list[index].member}명 참여중</Member>
+          <Tag>{board.boardCategory}</Tag>
+          <Member>{board.boardClick.toLocaleString()}명 참여중</Member>
         </Row>
         <span
           style={{ marginTop: "12px", fontSize: "18px", fontWeight: "700" }}
         >
-          {list[index].title}
+          {board.boardTitle}
         </span>
         <span style={{ marginTop: "8px", fontSize: "14px", fontWeight: "500" }}>
-          {list[index].decription}
+          {board.boardDescription}
         </span>
       </Column>
       <img
         src={button_enter}
         alt="Enter Button"
-        style={{ marginTop: "40px" }}
+        style={{ marginTop: "40px", cursor: "pointer" }}
       />
     </RoomDetailPageComponent>
   );
