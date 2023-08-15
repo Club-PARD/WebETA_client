@@ -7,6 +7,8 @@ import fandom17_1 from "../../asset/img/MyFandomList_Seventeen1.png";
 import fandom17_2 from "../../asset/img/MyFandomList_Seventeen2.png";
 import fandom17_3 from "../../asset/img/MyFandomList_Seventeen3.png";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
 
 const data = [
   {
@@ -175,6 +177,23 @@ const Description = styled.div`
 `;
 
 const AfterHome = () => {
+  useEffect(() => {
+    const header = {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    };
+    axios
+      .get("http://3.34.188.69:8080/api/board/loginList/세븐틴 ", {
+        headers: header,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
       <FandomRank>

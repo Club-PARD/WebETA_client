@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { styled } from "styled-components";
 import back from "../../asset/img/Back.svg";
 import button_enter from "../../asset/img/Button_Enter.svg";
 import { Link, useParams } from "react-router-dom";
 import { data } from "../Home/AfterHome";
+import axios from "axios";
 
 const RoomDetailPageComponent = styled.div`
   display: flex;
@@ -63,6 +64,21 @@ const Member = styled.div`
 
 function FandomRoomDetail() {
   const { index } = useParams();
+
+  useEffect(() => {
+    const header = {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    };
+
+    axios
+      .get(`http://3.34.188.69:8080/api/board/oneList/${index}`, {
+        headers: header,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  }, [index]);
 
   return (
     <RoomDetailPageComponent>

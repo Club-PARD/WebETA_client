@@ -3,8 +3,8 @@ import logo from "../asset/img/Logo.svg";
 import { Link } from "react-router-dom";
 import { content, useTabs } from "../components/Home/useTabs";
 import profile from "../asset/img/Profile.svg";
-
-let currentUser = null;
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function HomePage() {
   const HomePageComponent = styled.div`
@@ -76,6 +76,7 @@ function HomePage() {
   `;
 
   const { currentItem, changeItem } = useTabs(0, content);
+  const [currentUser, setCurrentUser] = useState(null);
 
   return (
     <HomePageComponent>
