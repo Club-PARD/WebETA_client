@@ -110,7 +110,7 @@ const Div = styled.div`
   width: 375px;
   height: 16px;
   background-color: var(--gray-10, #f8f9fa);
-  margin: 12px -24px 0 0;
+  margin: 12px 0 0 -24px;
 `;
 
 const Modal = styled(modal)`
@@ -119,7 +119,7 @@ const Modal = styled(modal)`
   width: 343px;
   border-radius: 10px;
   background-color: #fff;
-  margin: 30% auto;
+  margin: 15% auto;
   padding: 24px;
 `;
 
