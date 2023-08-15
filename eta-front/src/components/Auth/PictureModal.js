@@ -76,10 +76,10 @@ const FileInput = styled.input`
 `;
 
 function PictureModal({ onClose, onNoClick }) {
-  const [userImage, setserImage] = useState(null);
+  const [userImage, setUserImage] = useState(null);
 
   const handleFileChange = (e) => {
-    setserImage(e.target.files[0]);
+    setUserImage(e.target.files[0]);
   };
 
   const handlePhotoUpload = async () => {

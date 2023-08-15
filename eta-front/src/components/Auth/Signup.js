@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DropdownSelect from 'react-dropdown-select';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation} from 'react-router-dom';
 import PictureModal from './PictureModal';
 import profile_pic from '../../asset/img/Icon_SignupProfile.svg';
 import Age_Check from '../../asset/img/Age_Checked.svg';
@@ -11,6 +11,7 @@ import Button_Start from "../../asset/img/Button_Start.svg";
 import Unchecked from "../../asset/img/Unchecked.svg";
 import Checked from "../../asset/img/Checked.svg";
 import Back from "../../asset/img/Back.svg";
+import ToastMsg from "../../asset/img/Toast_Message.svg";
 
 const DDiv = styled.div`
     display: flex;
@@ -154,16 +155,17 @@ function Signup() {
     const [inputCount, setInputCount] = useState(0); 
     const [userNickname, setUserNickname] = useState("");
     const [userFanclub, setUserFanclub] = useState("");
+    const [userImage, setUserImage] = useState("");
     const [imageSrc, setImageSrc] = useState(Start_Inactive); 
-    const [isClicked, setIsClicked] = useState(false); 
+    // const [isClicked, setIsClicked] = useState(false); 
     const [checkActive, setCheckActive] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const onInputHandler = (e) => {
-        const data = {
-            "userKakaoNickname" : userNickname,
-            "userFanclub": userFanclub,
-        }
+        // const data = {
+        //     "userKakaoNickname" : userNickname,
+        //     "userFanclub": userFanclub,
+        // }
         setInputCount(e.target.value.length);
         setUserNickname(e.target.value);
     };
@@ -178,6 +180,7 @@ function Signup() {
     };
     
     const navigate = useNavigate();
+
     const handleFandomSelect = (userFanclub) => {
         setUserFanclub(userFanclub[0].value);
     };
@@ -196,22 +199,29 @@ function Signup() {
     const handleCheckClick = () => {
         setCheckActive(!checkActive); 
     };
-    const SignupSuccess = async ()=>{
+    const SignupSuccess = async (data)=>{
+
+        const SignupData = {
+            userKakaoId: localStorage.getItem("userKakaoId"), 
+            userKakaoNickname: userNickname,
+            userFanclub: userFanclub,
+            userImage: userImage
+        }
         try {
-            const response = await axios.post("http://3.34.188.69:8080/api/user/signUp", {
-                userKakaoId: localStorage.getItem("userKakaoId"), 
-                userKakaoNickname: userNickname,
-                userFanclub: userFanclub,
-                kakaoAccessToken: localStorage.getItem("kakaoAccessToken"),
-            })
-            .then((response) => {
-                console.log (response.data);
-                return;
-            })
+            const response = await axios.post("http://3.34.188.69:8080/api/user/signUp", SignupData);
+            console.log("Server Response:", response.data);
+
+            if (response.data.message === "Sign Up Success!"){
+                navigate ("../");
+                console.log("Server Response:", response.data);
+            }
+            else (
+                console.log("Signup Failed!")
+            )
         } catch (error) {
             console.error("Error sending Kakao login data:", error);
         }
-    }
+    };
     
     return (
         <DDiv>
@@ -300,17 +310,16 @@ function Signup() {
             </Container>
             <StartBtn 
                 src={imageSrc} 
-                // onClick ={SignupSuccess}
                 onClick={() => {
                     if (userNickname && userFanclub && checkActive) {
                         SignupSuccess();
                         navigate("/");  //로그인 후 화면으로 넘어가야 함.
                     }
                     }}
+                onSuccess={SignupSuccess}
                 onMouseEnter={() => setImageSrc(Button_Start)} 
                 onMouseLeave={() => setImageSrc(Start_Inactive)}
             />
-
             </Div>        
             {isModalOpen && (
             <Overlay onClick={handleOverlayClick}>

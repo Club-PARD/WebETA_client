@@ -1,19 +1,40 @@
 import KakaoLogin from "react-kakao-login";
 import KakaoBtn from "../../asset/img/Button_Kakao.svg";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
+import Signup from "./Signup";
+import axios from "axios";
+
 
 const SocialKakao =()=>{
 
     const kakaoClientId = 'ba617b53baedf0e8b925ac1a656635a3';
-    const history = useNavigate(); 
+    const navigate = useNavigate(); 
 
-    const kakaoOnSuccess = async (data)=>{
+    const KakaoOnSuccess = async (data)=>{
       	console.log(data)
-        //const idToken = data.response.access_token  // 엑세스 토큰 백엔드로 전달
+        sessionStorage.setItem("userKakaoId", data.profile.id);
+        sessionStorage.setItem("kakaoAccessToken", data.response.access_token);
+        const loginData = {
+            userKakaoId: data.profile.id,
+            kakaoAccessToken: data.response.access_token
+        };
+
         // 로그인 성공 시 SignupPage 페이지로 이동
-        history("/Signup");
-    }
+        try {
+            const response = await axios.post("http://3.34.188.69:8080/api/user/signIn", loginData);
+
+            if (response.data.message === "Sign In Success"){
+                navigate ("../");
+                console.log("Server Response:", response.data);
+            }
+            else {
+                navigate ("../Signup");
+            }
+        } catch (error) {
+            console.error("Error sending login data:", error);
+        }
+    };
     const kakaoOnFailure = (error) => {
         console.log(error);
     };
@@ -22,7 +43,7 @@ const SocialKakao =()=>{
         <>
           <KakaoLogin
               token={kakaoClientId}
-              onSuccess={kakaoOnSuccess}
+              onSuccess={KakaoOnSuccess}
               onFail={kakaoOnFailure}
               render={({ onClick }) => (
                 <button onClick={onClick} 

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import logo from "../asset/img/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { content, useTabs } from "../components/Home/useTabs";
 import profile from "../asset/img/Profile.svg";
+import MyPage from "./MyPage";
 
 let currentUser = null;
 
@@ -76,12 +77,14 @@ function HomePage() {
   `;
 
   const { currentItem, changeItem } = useTabs(0, content);
+  const userId = {  userKakaoId: localStorage.getItem("userKakaoId")};
+  const navigate = useNavigate();
 
   return (
     <HomePageComponent>
       <Row>
         <img src={logo} alt="EveryFandom Logo" />
-        {currentUser === null ? (
+        {currentUser !== null ? (
           <Link to={`/Login`}>
             <LoginButton>로그인</LoginButton>
           </Link>
@@ -89,16 +92,21 @@ function HomePage() {
           <Profile>
             <Row>
               <img src={profile} alt="Profile" />
-              <span
+              <button
                 style={{
                   color: `var(--purple-100, #5639A6)`,
                   marginLeft: "4px",
                   fontSize: "14px",
                   fontWeight: "700",
+                  cursor: 'pointer',
+                  border: 'none',
+                  backgroundColor: 'transparent',
                 }}
-              >
+                onClick={() => navigate('/MyPage')}
+                >
+                {/* {userId} */}
                 조슈아가 나라다
-              </span>
+              </button>
               <span
                 style={{
                   color: `var(--gray-30, #ABABAB)`,

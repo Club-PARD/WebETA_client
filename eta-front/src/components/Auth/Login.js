@@ -51,6 +51,6 @@ function Login() {
             </Div>
         </DDiv>
     );
-    }
+}
 
 export default Login;
