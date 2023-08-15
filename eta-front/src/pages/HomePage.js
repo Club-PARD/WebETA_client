@@ -82,7 +82,7 @@ function HomePage() {
     <HomePageComponent>
       <Row>
         <img src={logo} alt="EveryFandom Logo" />
-        {currentUser === null ? (
+        {currentUser !== null ? (
           <Link to={`/Login`}>
             <LoginButton>로그인</LoginButton>
           </Link>

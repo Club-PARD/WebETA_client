@@ -9,11 +9,11 @@ let currentUser = null;
 const content = [
   {
     tab: "홈",
-    content: currentUser === null ? <BeforeHome /> : <AfterHome />,
+    content: currentUser !== null ? <BeforeHome /> : <AfterHome />,
   },
   {
     tab: "커뮤니티",
-    content: currentUser === null ? <BeforeCommunity /> : <AfterCommunity />,
+    content: currentUser !== null ? <BeforeCommunity /> : <AfterCommunity />,
   },
 ];
 

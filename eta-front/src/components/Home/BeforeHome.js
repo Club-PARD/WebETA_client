@@ -1,22 +1,12 @@
 import { styled } from "styled-components";
 import join from "../../asset/img/Button_Join.svg";
-import rankBTS from "../../asset/img/Rank_BTS.png";
 import close from "../../asset/img/Close.svg";
 import modalLogo from "../../asset/img/Modal_Logo.svg";
-import up from "../../asset/img/up.svg";
-import down from "../../asset/img/down.svg";
-import rank17 from "../../asset/img/Rank_Seventeen.png";
-import rankEXO from "../../asset/img/Rank_EXO.png";
-import fandomEXO from "../../asset/img/FandomList_EXO.png";
-import fandom17 from "../../asset/img/FandomList_Seventeen.png";
-import fandomIU from "../../asset/img/FandomList_IU.png";
-import fandomNJ from "../../asset/img/FandomList_NewJeans.png";
-import fandomBTS from "../../asset/img/FandomList_BTS.png";
-import fandomIVE from "../../asset/img/FandomList_IVE.png";
 import modal from "react-modal";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { rank, images } from "../data";
 
 const Row = styled.div`
   display: flex;
@@ -173,44 +163,6 @@ const ModalButton = styled.button`
   border: none;
 `;
 
-const rank = [
-  {
-    fanclub: "방탄소년단",
-    image: rankBTS,
-    count: 17432,
-    rising: "-",
-  },
-  {
-    fanclub: "세븐틴",
-    image: rank17,
-    count: 12879,
-    rising: (
-      <>
-        <img src={up} alt="up" />1
-      </>
-    ),
-  },
-  {
-    fanclub: "엑소",
-    image: rankEXO,
-    count: 9473,
-    rising: (
-      <>
-        <img src={down} alt="down" />1
-      </>
-    ),
-  },
-];
-
-const images = [
-  `url(${fandomEXO})`,
-  `url(${fandom17})`,
-  `url(${fandomIU})`,
-  `url(${fandomNJ})`,
-  `url(${fandomBTS})`,
-  `url(${fandomIVE})`,
-];
-
 const BeforeHome = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [boardList, setBoradList] = useState([]);
@@ -290,7 +242,7 @@ const BeforeHome = () => {
               <Row style={{ marginTop: "15px" }}>
                 <Column>
                   <div style={{ fontSize: "24px", fontWeight: "600" }}>
-                    {index + 1}
+                    {ranking.ranking}
                   </div>
                   <div
                     style={{
@@ -338,17 +290,17 @@ const BeforeHome = () => {
       <Div />
       <Title style={{ marginTop: "24px" }}>💬 전체 팬덤방</Title>
       <FandomList>
-        {boardList.map((fandomCard, index) => {
+        {boardList.map((board, index) => {
           return (
             <FandomCard
               onClick={openModal}
               style={{ backgroundImage: images[index] }}
             >
               <Gradient />
-              <Tag>{fandomCard.boardCategory}</Tag>
-              <Member>{fandomCard.boardClick}명 참여중</Member>
-              <RoomTitle>{fandomCard.boardTitle}</RoomTitle>
-              <Description>{fandomCard.boardDescription}</Description>
+              <Tag>{board.boardCategory}</Tag>
+              <Member>{board.boardClick}명 참여중</Member>
+              <RoomTitle>{board.boardTitle}</RoomTitle>
+              <Description>{board.boardDescription}</Description>
             </FandomCard>
           );
         })}
