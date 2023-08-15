@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import Login_logo from "../../asset/img/Login_Logo.svg"; 
+import Login_logo from "../../asset/img/Login_Logo.svg";
+import Login_title from "../../asset/img/Login_title.svg";
 import SocialKakao from './SocialKakao';
 
 function Login() {
@@ -21,14 +22,14 @@ function Login() {
         overflow-x: hidden;
     `;
 
-    const H1 = styled.div`
+    const Title = styled.img`
         margin-top: 200px;
-        //font-family: Sandoll Nemony;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0em;
-        text-align: center;
+        align-items: center;
+        display: flex;
+        width: 191px;
+        height: 24px;
+        margin-left: 92px;
+        
     `;
 
     const Logo = styled.img`
@@ -44,7 +45,7 @@ function Login() {
     return (
         <DDiv>  
             <Div>
-                <H1>모든 팬의 마음은 소중하니까</H1>
+                <Title src={Login_title} alt="Login_title" ></Title>
                 <Logo src={Login_logo} alt="Login_logo"/>
                 <SocialKakao />
             </Div>
