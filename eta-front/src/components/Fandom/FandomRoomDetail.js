@@ -102,7 +102,7 @@ function FandomRoomDetail() {
       <Column>
         <Row style={{ marginTop: "22px", gap: "4px" }}>
           <Tag>{board.boardCategory}</Tag>
-          <Member>{board.boardClick.toLocaleString()}명 참여중</Member>
+          <Member>{board.boardClick}명 참여중</Member>
         </Row>
         <span
           style={{ marginTop: "12px", fontSize: "18px", fontWeight: "700" }}
