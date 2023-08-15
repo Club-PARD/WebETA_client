@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import Login_logo from "../../asset/img/Logo_Login.png"; 
+import Login_logo from "../../asset/img/Login_Logo.svg"; 
 import SocialKakao from './SocialKakao';
 
 function Login() {

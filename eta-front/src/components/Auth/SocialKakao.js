@@ -1,5 +1,5 @@
 import KakaoLogin from "react-kakao-login";
-import KakaoBtn from "../../asset/img/Button_Kakao.png";
+import KakaoBtn from "../../asset/img/Button_Kakao.svg";
 import React from "react";
 import { useNavigate } from "react-router-dom"; 
 

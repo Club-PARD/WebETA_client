@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import DropdownSelect from 'react-dropdown-select';
 import axios from 'axios';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import PictureModal from './PictureModal';
 import profile_pic from '../../asset/img/Icon_SignupProfile.svg';
 import Age_Check from '../../asset/img/Age_Check.svg';
 import Start_Inactive from "../../asset/img/Start_Inactive.svg";
 import Button_Start from "../../asset/img/Button_Start.svg";
-import { useNavigate } from 'react-router-dom';
-import PictureModal from './PictureModal';
 import Unchecked from "../../asset/img/Unchecked.svg";
 import Checked from "../../asset/img/Checked.svg";
 
