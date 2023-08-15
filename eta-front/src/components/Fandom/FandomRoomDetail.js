@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import back from "../../asset/img/Back.svg";
 import button_enter from "../../asset/img/Button_Enter.svg";
 import { Link, useParams } from "react-router-dom";
-import { data } from "../Home/AfterHome";
+import { list } from "../data";
+import axios from "axios";
 
 const RoomDetailPageComponent = styled.div`
   display: flex;
@@ -63,6 +64,22 @@ const Member = styled.div`
 
 function FandomRoomDetail() {
   const { index } = useParams();
+  const [board, setBoard] = useState({});
+
+  useEffect(() => {
+    const header = {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    };
+
+    axios
+      .get(`http://3.34.188.69:8080/api/board/oneList/${index}`, {
+        headers: header,
+      })
+      .then((response) => {
+        setBoard(response.data.data);
+      });
+  }, [index]);
 
   return (
     <RoomDetailPageComponent>
@@ -80,26 +97,26 @@ function FandomRoomDetail() {
         <div />
       </Row>
       <FandomCard
-        style={{ backgroundImage: `${data[index].image}`, marginTop: "22px" }}
+        style={{ backgroundImage: `${list[index].image}`, marginTop: "22px" }}
       />
       <Column>
         <Row style={{ marginTop: "22px", gap: "4px" }}>
-          <Tag>{data[index].tag}</Tag>
-          <Member>{data[index].member}명 참여중</Member>
+          <Tag>{board.boardCategory}</Tag>
+          <Member>{board.boardClick}명 참여중</Member>
         </Row>
         <span
           style={{ marginTop: "12px", fontSize: "18px", fontWeight: "700" }}
         >
-          {data[index].title}
+          {board.boardTitle}
         </span>
         <span style={{ marginTop: "8px", fontSize: "14px", fontWeight: "500" }}>
-          {data[index].decription}
+          {board.boardDescription}
         </span>
       </Column>
       <img
         src={button_enter}
         alt="Enter Button"
-        style={{ marginTop: "40px" }}
+        style={{ marginTop: "40px", cursor: "pointer" }}
       />
     </RoomDetailPageComponent>
   );

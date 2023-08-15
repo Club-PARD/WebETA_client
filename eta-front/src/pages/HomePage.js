@@ -3,9 +3,14 @@ import logo from "../asset/img/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { content, useTabs } from "../components/Home/useTabs";
 import profile from "../asset/img/Profile.svg";
+<<<<<<< HEAD
 import MyPage from "./MyPage";
 
 let currentUser = null;
+=======
+import axios from "axios";
+import { useEffect, useState } from "react";
+>>>>>>> 7244b6be32f3caf60412c05469ba9c2293c0c3f2
 
 function HomePage() {
   const HomePageComponent = styled.div`
@@ -77,8 +82,12 @@ function HomePage() {
   `;
 
   const { currentItem, changeItem } = useTabs(0, content);
+<<<<<<< HEAD
   const userId = {  userKakaoId: localStorage.getItem("userKakaoId")};
   const navigate = useNavigate();
+=======
+  const [currentUser, setCurrentUser] = useState(null);
+>>>>>>> 7244b6be32f3caf60412c05469ba9c2293c0c3f2
 
   return (
     <HomePageComponent>

@@ -1,21 +1,12 @@
 import { styled } from "styled-components";
 import join from "../../asset/img/Button_Join.svg";
-import rankBTS from "../../asset/img/Rank_BTS.png";
 import close from "../../asset/img/Close.svg";
 import modalLogo from "../../asset/img/Modal_Logo.svg";
-import up from "../../asset/img/up.svg";
-import down from "../../asset/img/down.svg";
-import rank17 from "../../asset/img/Rank_Seventeen.png";
-import rankEXO from "../../asset/img/Rank_EXO.png";
-import fandomEXO from "../../asset/img/FandomList_EXO.png";
-import fandom17 from "../../asset/img/FandomList_Seventeen.png";
-import fandomIU from "../../asset/img/FandomList_IU.png";
-import fandomNJ from "../../asset/img/FandomList_NewJeans.png";
-import fandomBTS from "../../asset/img/FandomList_BTS.png";
-import fandomIVE from "../../asset/img/FandomList_IVE.png";
 import modal from "react-modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { rank, images } from "../data";
 
 const Row = styled.div`
   display: flex;
@@ -148,7 +139,7 @@ const Modal = styled(modal)`
   width: 343px;
   border-radius: 10px;
   background-color: #fff;
-  margin: 30% auto;
+  margin: 50% auto;
   padding: 24px;
 `;
 
@@ -174,6 +165,7 @@ const ModalButton = styled.button`
 
 const BeforeHome = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [boardList, setBoradList] = useState([]);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -182,6 +174,12 @@ const BeforeHome = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    axios.get("http://3.34.188.69:8080/api/board/allList").then((response) => {
+      setBoradList(response.data.data);
+    });
+  }, []);
 
   return (
     <div>
@@ -238,195 +236,74 @@ const BeforeHome = () => {
             </ButtonBar>
           </Modal>
         </Row>
-        <Row style={{ marginTop: "15px" }}>
-          <Column>
-            <div style={{ fontSize: "24px", fontWeight: "600" }}>1</div>
-            <div
-              style={{
-                color: "var(--gray-30, #ABABAB)",
-                fontWeight: "700",
-                fontSize: "12px",
-              }}
-            >
-              -
-            </div>
-          </Column>
-          <img
-            src={rankBTS}
-            alt="BTS Profile"
-            width="44px"
-            height="44px"
-            style={{ borderRadius: "50%", marginLeft: "22px" }}
-          />
-          <span
-            style={{
-              flexGrow: 1,
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "10px",
-            }}
-          >
-            방탄소년단
-          </span>
-          <span
-            style={{
-              color: "var(--gray-30, #ABABAB)",
-              textAlign: "right",
-              fontSize: "12px",
-              fontWeight: "500",
-            }}
-          >
-            17,432회
-          </span>
-        </Row>
-        <Hr />
-        <Row style={{ marginTop: "15px" }}>
-          <Column>
-            <div style={{ fontSize: "24px", fontWeight: "600" }}>2</div>
-            <div
-              style={{
-                color: "var(--gray-30, #ABABAB)",
-                fontWeight: "500",
-                fontSize: "12px",
-              }}
-            >
-              <img src={up} alt="up" />1
-            </div>
-          </Column>
-          <img
-            src={rank17}
-            alt="Seventeen Profile"
-            width="44px"
-            height="44px"
-            style={{ borderRadius: "50%", marginLeft: "22px" }}
-          />
-          <span
-            style={{
-              flexGrow: 1,
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "10px",
-            }}
-          >
-            세븐틴
-          </span>
-          <span
-            style={{
-              color: "var(--gray-30, #ABABAB)",
-              textAlign: "right",
-              fontSize: "12px",
-              fontWeight: "500",
-            }}
-          >
-            12,879회
-          </span>
-        </Row>
-        <Hr />
-        <Row style={{ marginTop: "15px" }}>
-          <Column>
-            <div style={{ fontSize: "24px", fontWeight: "600" }}>3</div>
-            <div
-              style={{
-                color: "var(--gray-30, #ABABAB)",
-                fontWeight: "500",
-                fontSize: "12px",
-              }}
-            >
-              <img src={down} alt="down" />1
-            </div>
-          </Column>
-          <img
-            src={rankEXO}
-            alt="Seventeen Profile"
-            width="44px"
-            height="44px"
-            style={{ borderRadius: "50%", marginLeft: "22px" }}
-          />
-          <span
-            style={{
-              flexGrow: 1,
-              fontSize: "14px",
-              fontWeight: "600",
-              marginLeft: "10px",
-            }}
-          >
-            엑소
-          </span>
-          <span
-            style={{
-              color: "var(--gray-30, #ABABAB)",
-              textAlign: "right",
-              fontSize: "12px",
-              fontWeight: "500",
-            }}
-          >
-            9,473회
-          </span>
-        </Row>
+        {rank.map((ranking, index) => {
+          return (
+            <>
+              <Row style={{ marginTop: "15px" }}>
+                <Column>
+                  <div style={{ fontSize: "24px", fontWeight: "600" }}>
+                    {ranking.ranking}
+                  </div>
+                  <div
+                    style={{
+                      color: "var(--gray-30, #ABABAB)",
+                      fontWeight: "700",
+                      fontSize: "12px",
+                    }}
+                  >
+                    {ranking.rising}
+                  </div>
+                </Column>
+                <img
+                  src={ranking.image}
+                  alt="BTS Profile"
+                  width="44px"
+                  height="44px"
+                  style={{ borderRadius: "50%", marginLeft: "22px" }}
+                />
+                <span
+                  style={{
+                    flexGrow: 1,
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    marginLeft: "10px",
+                  }}
+                >
+                  {ranking.fanclub}
+                </span>
+                <span
+                  style={{
+                    color: "var(--gray-30, #ABABAB)",
+                    textAlign: "right",
+                    fontSize: "12px",
+                    fontWeight: "500",
+                  }}
+                >
+                  {ranking.count.toLocaleString()}회
+                </span>
+              </Row>
+              {index !== rank.length - 1 ? <Hr /> : <></>}
+            </>
+          );
+        })}
       </FandomRank>
       <Div />
       <Title style={{ marginTop: "24px" }}>💬 전체 팬덤방</Title>
       <FandomList>
-        <FandomCard
-          onClick={openModal}
-          style={{ backgroundImage: `url(${fandomEXO})` }}
-        >
-          <Gradient />
-          <Tag>봉사</Tag>
-          <Member>2793명 참여중</Member>
-          <RoomTitle>엑소엘 봉사 모임</RoomTitle>
-          <Description>유기견 봉사가실 분 모집합...</Description>
-        </FandomCard>
-        <FandomCard
-          onClick={openModal}
-          style={{ backgroundImage: `url(${fandom17})` }}
-        >
-          <Gradient />
-          <Tag>조공</Tag>
-          <Member>982명 참여중</Member>
-          <RoomTitle>세븐틴 조공방</RoomTitle>
-          <Description>콘서트 조공하실 분 들어오...</Description>
-        </FandomCard>
-        <FandomCard
-          onClick={openModal}
-          style={{ backgroundImage: `url(${fandomIU})` }}
-        >
-          <Gradient />
-          <Tag>조공</Tag>
-          <Member>766명 참여중</Member>
-          <RoomTitle>아이유 생일 조공</RoomTitle>
-          <Description>곧 생일 기념으로 촬영장...</Description>
-        </FandomCard>
-        <FandomCard
-          onClick={openModal}
-          style={{ backgroundImage: `url(${fandomNJ})` }}
-        >
-          <Gradient />
-          <Tag>조공</Tag>
-          <Member>327명 참여중</Member>
-          <RoomTitle>뉴진스 커피차</RoomTitle>
-          <Description>뮤비 스태프들 서포트해요...</Description>
-        </FandomCard>
-        <FandomCard
-          onClick={openModal}
-          style={{ backgroundImage: `url(${fandomBTS})` }}
-        >
-          <Gradient />
-          <Tag>기부</Tag>
-          <Member>25명 참여중</Member>
-          <RoomTitle>BTS 기부방</RoomTitle>
-          <Description>이번 수해지역 기부를 할까...</Description>
-        </FandomCard>
-        <FandomCard
-          onClick={openModal}
-          style={{ backgroundImage: `url(${fandomIVE})` }}
-        >
-          <Gradient />
-          <Tag>모임</Tag>
-          <Member>1명 참여중</Member>
-          <RoomTitle>수원 줌마팬 모임</RoomTitle>
-          <Description>수원 사시는 아이브 줌마팬...</Description>
-        </FandomCard>
+        {boardList.map((board, index) => {
+          return (
+            <FandomCard
+              onClick={openModal}
+              style={{ backgroundImage: images[index] }}
+            >
+              <Gradient />
+              <Tag>{board.boardCategory}</Tag>
+              <Member>{board.boardClick}명 참여중</Member>
+              <RoomTitle>{board.boardTitle}</RoomTitle>
+              <Description>{board.boardDescription}</Description>
+            </FandomCard>
+          );
+        })}
       </FandomList>
     </div>
   );

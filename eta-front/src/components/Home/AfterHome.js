@@ -1,46 +1,9 @@
 import { styled } from "styled-components";
 import join from "../../asset/img/Button_Join.svg";
-import rank17 from "../../asset/img/Rank_Seventeen.png";
-import up from "../../asset/img/up.svg";
-import fandom17 from "../../asset/img/FandomList_Seventeen.png";
-import fandom17_1 from "../../asset/img/MyFandomList_Seventeen1.png";
-import fandom17_2 from "../../asset/img/MyFandomList_Seventeen2.png";
-import fandom17_3 from "../../asset/img/MyFandomList_Seventeen3.png";
 import { Link } from "react-router-dom";
-
-const data = [
-  {
-    image: `url(${fandom17})`,
-    tag: "조공",
-    member: 982,
-    title: "세븐틴 조공방",
-    decription: "콘서트 조공하실 분 들어오세요~",
-  },
-  {
-    image: `url(${fandom17_1})`,
-    tag: "조공",
-    member: 32,
-    title: "셉틴 서울콘 서포트",
-    decription:
-      "7월 22일 서울 콘서트 스태프 간식 서포트 하려고 합니다. 최소 금액 제한 없으니 편하게 들어오세요!",
-  },
-  {
-    image: `url(${fandom17_2})`,
-    tag: "기부",
-    member: 1255,
-    title: "일본 진출 기념 기부",
-    decription:
-      "드디어 일본 진출한 우리 셉틴이들~ 기념으로 기부하려고 합니다! 소액이라도 와서 같이 해요~",
-  },
-  {
-    image: `url(${fandom17_3})`,
-    tag: "모임",
-    member: 6,
-    title: "쿱스 시사회 같이 가요",
-    decription:
-      "인천 시사회 8/19(토) 오후 7시에 있어요! 쿱스 보러 같이 가실 분~",
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { rank, list } from "../data";
 
 const Row = styled.div`
   display: flex;
@@ -96,6 +59,7 @@ const CreateButton = styled.button`
   font-weight: 600;
   color: var(--purple-100, #5639a6);
   background-color: transparent;
+  cursor: pointer;
 `;
 
 const FandomList = styled.div`
@@ -175,6 +139,25 @@ const Description = styled.div`
 `;
 
 const AfterHome = () => {
+  const [boardList, setBoardList] = useState([]);
+
+  useEffect(() => {
+    const header = {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    };
+    axios
+      .get("http://3.34.188.69:8080/api/board/loginList/세븐틴 ", {
+        headers: header,
+      })
+      .then((response) => {
+        setBoardList(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <div>
       <FandomRank>
@@ -186,7 +169,9 @@ const AfterHome = () => {
         </Row>
         <Row style={{ marginTop: "15px" }}>
           <Column>
-            <div style={{ fontSize: "24px", fontWeight: "600" }}>2</div>
+            <div style={{ fontSize: "24px", fontWeight: "600" }}>
+              {rank[1].ranking}
+            </div>
             <div
               style={{
                 color: "var(--gray-30, #ABABAB)",
@@ -194,11 +179,11 @@ const AfterHome = () => {
                 fontSize: "12px",
               }}
             >
-              <img src={up} alt="up" />1
+              {rank[1].rising}
             </div>
           </Column>
           <img
-            src={rank17}
+            src={rank[1].image}
             alt="Seventeen Profile"
             width="44px"
             height="44px"
@@ -212,7 +197,7 @@ const AfterHome = () => {
               marginLeft: "10px",
             }}
           >
-            세븐틴
+            {rank[1].fanclub}
           </span>
           <span
             style={{
@@ -222,7 +207,7 @@ const AfterHome = () => {
               fontWeight: "500",
             }}
           >
-            12,879회
+            {rank[1].count.toLocaleString()}회
           </span>
         </Row>
       </FandomRank>
@@ -237,17 +222,17 @@ const AfterHome = () => {
         </Link>
       </Row>
       <FandomList>
-        {data.map((room, index) => (
+        {boardList.map((board, index) => (
           <Link
             to={`/FandomRoom/${index}`}
             style={{ color: "black", textDecoration: "none" }}
           >
-            <FandomCard style={{ backgroundImage: `${room.image}` }}>
+            <FandomCard style={{ backgroundImage: `${list[index].image}` }}>
               <Gradient />
-              <Tag>{room.tag}</Tag>
-              <Member>{room.member}명 참여중</Member>
-              <RoomTitle>{room.title}</RoomTitle>
-              <Description>{room.decription}</Description>
+              <Tag>{board.boardCategory}</Tag>
+              <Member>{board.boardClick}명 참여중</Member>
+              <RoomTitle>{board.boardTitle}</RoomTitle>
+              <Description>{board.boardDescription}</Description>
             </FandomCard>
           </Link>
         ))}
@@ -257,4 +242,3 @@ const AfterHome = () => {
 };
 
 export default AfterHome;
-export { data };

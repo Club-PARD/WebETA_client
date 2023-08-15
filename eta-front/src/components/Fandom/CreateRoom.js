@@ -9,6 +9,7 @@ import close from "../../asset/img/Close.svg";
 import modalLogo from "../../asset/img/Icon_Camera.svg";
 import disabledButton from "../../asset/img/Button_CreateRoomInactive.svg";
 import enabledButton from "../../asset/img/Button_CreateRoom.svg";
+import axios from "axios";
 
 const category = ["조공", "모임", "봉사", "기부"];
 
@@ -114,7 +115,7 @@ const Modal = styled(modal)`
   width: 343px;
   border-radius: 10px;
   background-color: #fff;
-  margin: 30% auto;
+  margin: 50% auto;
   padding: 24px;
 `;
 
@@ -140,20 +141,20 @@ const ModalButton = styled.button`
 
 function CreateRoom() {
   const [permission, setPermission] = useState(false);
-  const [roomTitle, setRoomTitle] = useState("");
-  const [roomDescription, setRoomDescription] = useState("");
-  const [selectedOption, setSelectedOption] = useState("조공");
+  const [boardTitle, setBoardTitle] = useState("");
+  const [boardDescription, setBoardDescription] = useState("");
+  const [boardCategory, setBoardCategory] = useState("조공");
   const [isDisabled, setIsDisabled] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [image, setImage] = useState(null);
 
   useEffect(() => {
-    if (roomTitle === "" || roomDescription === "") {
+    if (boardTitle === "" || boardDescription === "") {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
-  }, [roomTitle, roomDescription]);
+  }, [boardTitle, boardDescription]);
 
   const handleImageChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -188,14 +189,14 @@ function CreateRoom() {
   };
 
   const handleOptionChange = (option) => {
-    setSelectedOption(option);
+    setBoardCategory(option);
   };
 
   const onChangeTitle = (event) => {
     const title = event.target.value;
 
     if (title.length <= 10) {
-      setRoomTitle(title);
+      setBoardTitle(title);
     }
   };
 
@@ -203,8 +204,39 @@ function CreateRoom() {
     const description = event.target.value;
 
     if (description.length <= 80) {
-      setRoomDescription(description);
+      setBoardDescription(description);
     }
+  };
+
+  const onClickCreate = () => {
+    const data = {
+      boardTitle: boardTitle,
+      boardDescription: boardDescription,
+      boardCategory: boardCategory,
+      boardImage: `url(${image})`,
+      boardWriterId: "1234",
+      boardWriterEmail: "asdf",
+      boardWriterNickname: "asdf",
+      boardWriterFanclub: "세븐틴",
+    };
+    const header = {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+      "Content-Type": "application/json",
+    };
+    axios
+      .post("http://3.34.188.69:8080/api/board/create", data, {
+        headers: header,
+      })
+      .then((response) => {
+        console.log(response.data);
+        if (!response.data.result) {
+          alert("보드 생성에 실패했습니다.");
+          return;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -288,29 +320,29 @@ function CreateRoom() {
         <RoomTitle
           type="text"
           placeholder="10자 이내로 원하는 방 이름을 적어주세요."
-          value={roomTitle}
+          value={boardTitle}
           onChange={onChangeTitle}
         />
         <Row style={{ justifyContent: "flex-end", marginTop: "4px" }}>
-          <InputLength>{roomTitle.length}/10</InputLength>
+          <InputLength>{boardTitle.length}/10</InputLength>
         </Row>
         <Title style={{ marginTop: "24px" }}>방 설명</Title>
         <RoomDescription
           placeholder="80자 이내로 방 설명을 적어주세요."
-          value={roomDescription}
+          value={boardDescription}
           onChange={onChangeDescription}
         />
         <Row style={{ justifyContent: "flex-end", marginTop: "4px" }}>
-          <InputLength>{roomDescription.length}/80</InputLength>
+          <InputLength>{boardDescription.length}/80</InputLength>
         </Row>
         <Title style={{ marginTop: "24px" }}>카테고리</Title>
         <Row style={{ margin: "10px 0 76px 0", gap: "10px" }}>
           {category.map((item) => (
             <StyledButtonRadio
-              checked={selectedOption === item}
+              checked={boardCategory === item}
               onClick={() => handleOptionChange(item)}
             >
-              {selectedOption === item && <img src={check} alt="Check Icon" />}{" "}
+              {boardCategory === item && <img src={check} alt="Check Icon" />}{" "}
               {item}
             </StyledButtonRadio>
           ))}
@@ -322,11 +354,14 @@ function CreateRoom() {
             style={{ cursor: "not-allowed" }}
           />
         ) : (
-          <img
-            src={enabledButton}
-            alt="Enabled Button"
-            style={{ cursor: "pointer" }}
-          />
+          <Link to={`../`}>
+            <img
+              src={enabledButton}
+              alt="Enabled Button"
+              style={{ cursor: "pointer" }}
+              onClick={onClickCreate}
+            />
+          </Link>
         )}
       </Column>
     </CreateRoomPageComponent>
