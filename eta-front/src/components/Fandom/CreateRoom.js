@@ -146,7 +146,7 @@ function CreateRoom() {
   const [boardCategory, setBoardCategory] = useState("조공");
   const [isDisabled, setIsDisabled] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     if (boardTitle === "" || boardDescription === "") {
@@ -213,7 +213,7 @@ function CreateRoom() {
       boardTitle: boardTitle,
       boardDescription: boardDescription,
       boardCategory: boardCategory,
-      boardImage: `url(${image})`,
+      boardImage: image !== "" ? `url(${image})` : "",
       boardWriterId: "1234",
       boardWriterEmail: "asdf",
       boardWriterNickname: "asdf",

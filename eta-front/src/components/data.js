@@ -86,6 +86,22 @@ const list = [
     decription:
       "인천 시사회 8/19(토) 오후 7시에 있어요! 쿱스 보러 같이 가실 분~",
   },
+  {
+    image: `url(${fandom17_3})`,
+    tag: "모임",
+    member: 6,
+    title: "쿱스 시사회 같이 가요",
+    decription:
+      "인천 시사회 8/19(토) 오후 7시에 있어요! 쿱스 보러 같이 가실 분~",
+  },
+  {
+    image: `url(${fandom17_3})`,
+    tag: "모임",
+    member: 6,
+    title: "쿱스 시사회 같이 가요",
+    decription:
+      "인천 시사회 8/19(토) 오후 7시에 있어요! 쿱스 보러 같이 가실 분~",
+  },
 ];
 
 export { rank, images, list };
