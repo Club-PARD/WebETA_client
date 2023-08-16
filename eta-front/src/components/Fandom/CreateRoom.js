@@ -213,7 +213,7 @@ function CreateRoom() {
       boardTitle: boardTitle,
       boardDescription: boardDescription,
       boardCategory: boardCategory,
-      boardImage: image !== "" ? `url(${image})` : "",
+      boardImage: "",
       boardWriterId: "1234",
       boardWriterEmail: "asdf",
       boardWriterNickname: "asdf",

@@ -66,10 +66,6 @@ function FandomRoomDetail() {
   const { index } = useParams();
   const [board, setBoard] = useState({});
 
-  const onClickEnter = () => {
-    alert("준비중이옵니다.");
-  };
-
   useEffect(() => {
     const header = {
       Authorization: "Bearer " + localStorage.getItem("token"),
@@ -101,7 +97,7 @@ function FandomRoomDetail() {
         <div />
       </Row>
       <FandomCard
-        style={{ backgroundImage: `${list[index].image}`, marginTop: "22px" }}
+        style={{ backgroundImage: `${list[index]}`, marginTop: "22px" }}
       />
       <Column>
         <Row style={{ marginTop: "22px", gap: "4px" }}>
@@ -117,12 +113,13 @@ function FandomRoomDetail() {
           {board.boardDescription}
         </span>
       </Column>
-      <img
-        src={button_enter}
-        alt="Enter Button"
-        style={{ marginTop: "40px", cursor: "pointer" }}
-        onClick={onClickEnter}
-      />
+      <a href={board.boardContext}>
+        <img
+          src={button_enter}
+          alt="Enter Button"
+          style={{ marginTop: "40px", cursor: "pointer" }}
+        />
+      </a>
     </RoomDetailPageComponent>
   );
 }
