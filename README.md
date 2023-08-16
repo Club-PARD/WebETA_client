@@ -26,30 +26,27 @@
 	│ ├─index.html (기본 HTML)
 	│ └─favicon.ico (파비콘)
 	├─src
-	│ ├─assets (이미지, 폰트 등)
-	│ ├─constants (상수, 라우트 경로)
-	│ ├─styles (글로벌 스타일)
-	│ ├─lib (리액트 라우터, styled-components)
-	│ ├─components (컴포넌트 like view)
-	│ ├─containers (like vm)
-	│ ├─pages (페이지)
-	│ ├─store (redux 모듈)
-	│ ├─saga (saga 함수)
-	│ ├─types (ts 공통 타입, 인터페이스)
-	│ ├─hooks (커스텀 훅)
-	│ ├─utils (공통 유틸 함수)
-	│ │ └─api (api axios 요청)
-	│ ├─index.tsx
-	│ └─App.tsx
-	├─config
-	│ ├─webpack.common.js
-	│ ├─webpack.dev.js
-	│ └─webpack.prod.js
+	│ ├─asset (이미지)
+ 	│ │ └─img (이미지)
+	│ ├─components (컴포넌트)
+ 	│ │ ├─Auth (로그인)
+  	│ │ ├─Home (홈)
+     	│ │ ├─Fandom (팬덤방)
+ 	│ │ └─data.js (데이터 like list)
+   	│ ├─pages (페이지)
+     	│ │ ├─HomePage.js (홈페이지)
+     	│ │ ├─LoginPage.js (로그인 페이지)
+     	│ │ ├─MyPage.js (마이페이지)
+     	│ │ ├─SignupPage.js (회원가입 페이지)
+     	│ │ ├─CreateRoomPage.js (방 생성 페이지)
+     	│ │ ├─FandomRankingPage.js (랭킹 페이지)
+ 	│ │ └─FandomRoomPage.js (팬덤방 페이지)
+  	│ ├─App.js (라우팅)
+    	│ └─index.js (root)
 	├─package.json
-	├─tsconfig.json
-	├─jest.config.js
-	├─.eslintrc.json
-	└─.prettierrc
+ 	├─.gitignore
+  	├─Readme.md
+ 	└─package-lock.json
 
 ## 📌 주요 기능
 
