@@ -153,21 +153,18 @@ const InactiveCheck = styled.img`
 
 function Signup() {
     const [inputCount, setInputCount] = useState(0); 
-    const [userNickname, setUserNickname] = useState("");
+    const [userKakaoNickname, setUserKakaoNickname] = useState("");
     const [userFanclub, setUserFanclub] = useState("");
     const [userImage, setUserImage] = useState("");
     const [imageSrc, setImageSrc] = useState(Start_Inactive); 
-    // const [isClicked, setIsClicked] = useState(false); 
     const [checkActive, setCheckActive] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [signupSuccess, setSignupSuccess] = useState(false);
 
     const onInputHandler = (e) => {
-        // const data = {
-        //     "userKakaoNickname" : userNickname,
-        //     "userFanclub": userFanclub,
-        // }
+
         setInputCount(e.target.value.length);
-        setUserNickname(e.target.value);
+        setUserKakaoNickname(e.target.value);
     };
     
 
@@ -199,34 +196,36 @@ function Signup() {
     const handleCheckClick = () => {
         setCheckActive(!checkActive); 
     };
-    const SignupSuccess = async (data)=>{
-        const [signupSuccess, setSignupSuccess] = useState(false);
-        localStorage.setItem("userKakaoNickname", data.response.userKakaoNickname);
-        localStorage.setItem("userFanclub", data.response.userFanclub);
-        localStorage.setItem("userImage", data.response.userImage);
-        
-        const SignupData = {
-            userKakaoId: localStorage.getItem("userKakaoId"), 
-            userKakaoNickname: userNickname,
-            userFanclub: userFanclub,
-            userImage: userImage
-        }
+    const SignupSuccess = async () => {
+        const userKakaoId = localStorage.getItem("userKakaoId");
+
+        localStorage.setItem("userKakaoNickname", userKakaoNickname);
+        localStorage.setItem("userFanclub", userFanclub);
+        localStorage.setItem("userImage", userImage);
+
+    const SignupData = {
+        userKakaoId: userKakaoId, 
+        userKakaoNickname: userKakaoNickname,
+        userFanclub: userFanclub,
+        userImage: userImage
+    };
+    
         try {
             const response = await axios.post("http://3.34.188.69:8080/api/user/signUp", SignupData);
             console.log("Server Response:", response.data);
-
+    
             if (response.data.message === "Sign Up Success!"){
-                navigate ("../");
+                navigate("../");
                 console.log("Server Response:", response.data);
                 setSignupSuccess(true);
+            } else {
+                console.log("Signup Failed!");
             }
-            else (
-                console.log("Signup Failed!")
-            )
         } catch (error) {
             console.error("Error sending Kakao login data:", error);
         }
     };
+    
     
     return (
         <DDiv>
@@ -316,7 +315,7 @@ function Signup() {
             <StartBtn 
                 src={imageSrc} 
                 onClick={() => {
-                    if (userNickname && userFanclub && checkActive) {
+                    if (userKakaoNickname && userFanclub && checkActive) {
                         SignupSuccess();
                         navigate("/");  //로그인 후 화면으로 넘어가야 함.
                     }

@@ -2,7 +2,6 @@ import KakaoLogin from "react-kakao-login";
 import KakaoBtn from "../../asset/img/Button_Kakao.svg";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Signup from "./Signup";
 import axios from "axios";
 
 const SocialKakao = () => {
