@@ -115,7 +115,7 @@ const Modal = styled(modal)`
   width: 343px;
   border-radius: 10px;
   background-color: #fff;
-  margin: 50% auto;
+  margin: 30vh auto;
   padding: 24px;
 `;
 

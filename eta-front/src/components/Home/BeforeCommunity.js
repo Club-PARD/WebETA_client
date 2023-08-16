@@ -239,7 +239,7 @@ const BeforeCommunity = () => {
               <Modal
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
-                style={{ overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" } }}
+                style={{ overlay: { backgroundColor: "rgba(0, 0, 0, 0.2)" } }}
               >
                 <Row style={{ justifyContent: "flex-end" }}>
                   <img src={close} alt="close button" onClick={closeModal} />

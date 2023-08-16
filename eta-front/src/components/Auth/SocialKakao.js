@@ -34,7 +34,7 @@ const SocialKakao = () => {
     } catch (error) {
       console.error("Error sending login data:", error);
     }
-      };
+  };
 
   const kakaoOnFailure = (error) => {
     console.log(error);
