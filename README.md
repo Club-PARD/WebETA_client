@@ -13,9 +13,9 @@
 
 ## ⚙️ 기술 스택
 
-|  React    |  Axios  |  Postman  | 
+|  React    |  Axios  |  Styled-Component  | 
 | :--------: | :-------: | :-------: |
-|   ![sp]    |   ![ec2]  |   ![pm]   |
+|   ![ra]    |   ![ax]  |   ![sc]   |
 
 <br>
 
@@ -441,6 +441,6 @@
 
 <!-- Stack Icon Refernces -->
 
-[sp]: /readme/react.png
-[ec2]: /readme/axios.png
-[pm]: /readme/postman.png
+[ra]: /readme/react.png
+[ax]: /readme/axios.png
+[sc]: /readme/styled_component.png
