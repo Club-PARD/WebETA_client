@@ -50,8 +50,9 @@
 
 ## 🖼️ Preview
 
-### HomePage
- 
+### 🏠 HomePage
+|   <img src='/readme/BeforeHome.png' width='100'/>   |   <img src='/readme/BeforeHome2.png' width='100'/>  |   <img src='/readme/AfterHome.png' width='100'/>   |
+
 
 ### 🔗 Board
 
