@@ -11,36 +11,42 @@
 
 
 
-## ⚙️ 기술 스택
+## ⚙️ Tech Stacks
 
 |  React    |  Axios  |  Styled-Component  | 
 | :--------: | :-------: | :-------: |
-|   ![ra]    |   ![ax]  |   ![sc]   |
+|   <img src='/readme/react.png' width='310'/>   |   <img src='/readme/axios.png' width='310'/>  |   <img src='/readme/styled_component.png' width='310'/>   |
 
 <br>
 
-## 💽 자료구조
+## 🎄 Project Structure
 
-### user
-    user_kakao_id (PK) (BIGINT)
-    user_kakao_nickname (VARCHAR(20))
-    user_fanclub (VARCHAR(30))
-    user_image (TEXT)
-
-### board
-    board_number (PK) (INT) (AUTO_INCREMENT)
-    board_title (VARCHAR(255))
-    board_description (TEXT)
-    board_category (VARCHAR(255))
-    board_context (TEXT)
-    board_click (BIGINT) (DEFAULT 0)
-    board_image (TEXT)
-    
-    board_writer_id (BIGINT)
-    board_writer_nickname (VARCHAR(255))
-    board_writer_fanclub (VARCHAR(255))
-    
-    board_write_date (TIMESTAMP) (DEFAULT CURRENT_TIMESTAMP)
+	🔥 client🔥
+	├─public
+	│ ├─index.html (기본 HTML)
+	│ └─favicon.ico (파비콘)
+	├─src
+	│ ├─asset (이미지)
+ 	│ │ └─img (이미지)
+	│ ├─components (컴포넌트)
+ 	│ │ ├─Auth (로그인)
+  	│ │ ├─Home (홈)
+	│ │ ├─Fandom (팬덤방)
+ 	│ │ └─data.js (데이터 like list)
+   	│ ├─pages (페이지)
+	│ │ ├─HomePage.js (홈페이지)
+	│ │ ├─LoginPage.js (로그인 페이지)
+	│ │ ├─MyPage.js (마이페이지)
+	│ │ ├─SignupPage.js (회원가입 페이지)
+	│ │ ├─CreateRoomPage.js (방 생성 페이지)
+	│ │ ├─FandomRankingPage.js (랭킹 페이지)
+	│ │ └─FandomRoomPage.js (팬덤방 페이지)
+	│ ├─App.js (라우팅)
+	│ └─index.js (root)
+	├─package.json
+ 	├─.gitignore
+  	├─Readme.md
+ 	└─package-lock.json
 
 ## 📌 주요 기능
 

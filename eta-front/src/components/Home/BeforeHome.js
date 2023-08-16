@@ -131,6 +131,10 @@ const Description = styled.div`
   left: 12px;
   font-size: 12px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 90%;
+  white-space: nowrap;
 `;
 
 const Modal = styled(modal)`

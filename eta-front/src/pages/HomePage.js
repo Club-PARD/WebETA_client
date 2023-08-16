@@ -78,7 +78,9 @@ function HomePage() {
   `;
 
   const userId = { userKakaoId: localStorage.getItem("userKakaoId") };
-  const userNickname = {userNickname: localStorage.getItem("userKakaoNickname")};
+  const userNickname = {
+    userNickname: localStorage.getItem("userKakaoNickname"),
+  };
   const navigate = useNavigate();
 
   const content = [

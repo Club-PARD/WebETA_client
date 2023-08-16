@@ -224,10 +224,10 @@ const AfterHome = () => {
       <FandomList>
         {boardList.map((board, index) => (
           <Link
-            to={`/FandomRoom/${index}`}
+            to={`/FandomRoom/${board.boardNumber}`}
             style={{ color: "black", textDecoration: "none" }}
           >
-            <FandomCard style={{ backgroundImage: `${list[index].image}` }}>
+            <FandomCard style={{ backgroundImage: `${list[index]}` }}>
               <Gradient />
               <Tag>{board.boardCategory}</Tag>
               <Member>{board.boardClick}명 참여중</Member>
