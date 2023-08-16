@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Back from "../asset/img/Back.svg";
 import Profile_Edit from "../asset/img/Profile_Edit.svg";
 import Edit from "../asset/img/Edit.svg";
@@ -130,7 +130,7 @@ function MyPage() {
     const [userImage, setUserImage] = useState(null);
     const [inputCount, setInputCount] = useState(0); 
     const [userNickname, setUserNickname] = useState("조슈아가 나라다");
-
+    const navigate = useNavigate();
 
     const handleFileChange = (e) => {
         setUserImage(e.target.files[0]);
@@ -166,14 +166,14 @@ function MyPage() {
 
     const handleKakaoLogout = async () => {
         try {
-            const response = await axios.post(
-              "http://3.34.188.69:8080/api/user/signIn", // 변경해야 할 부분
-              null,
-            );
-            localStorage.removeItem("userKakaoId" && "kakaoAccessToken");
-
-            console.log("Logout success:", response.status);
-            console.log(response.data)
+            // const response = await axios.post(
+            //   "http://3.34.188.69:8080/api/user/signIn", // 변경해야 할 부분
+            //   null,
+            // );
+            // localStorage.removeItem("userKakaoId" && "kakaoAccessToken");
+            navigate("../");
+            // console.log("Logout success:", response.status);
+            // console.log(response.data)
 
           } catch (error) {
             console.error("Logout failed:", error);
@@ -235,8 +235,7 @@ function MyPage() {
             <SaveButton src={SaveBtn} alt= "SaveBtn"/>
             <LogoutButton onClick={handleKakaoLogout}>
                 로그아웃하기
-                <Link to ={"/"}/>
-                </LogoutButton>
+            </LogoutButton>
             </Div>
         </DDiv>
     );

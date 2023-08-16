@@ -143,7 +143,7 @@ const AfterHome = () => {
   
   useEffect(() => {
     const header = {
-      Authorization: "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIxNTMwNzAsImV4cCI6MTY5MjE1NjY3MH0.LCssow-iqEYL-G4XJb_OOqRs_tFej_pGnC_y-9HuSwTDqS4A5BlF_fCt-J6cQjMcEHQsG2DO8uEiHZTuULk4WA",
+      Authorization: "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIxNzA5MjUsImV4cCI6MTY5MjE3NDUyNX0.1Ix5KHQZFHQ3ZSXaiLEJ_qkdXxfHwA8a6Zg3UanNCPenMENcs9qOGrL3Lqx60yZrzv7DMEsTDjZ5N9SqocFjdg",
       "Content-Type": "application/json",
     };
     axios

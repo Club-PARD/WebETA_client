@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import MyPage from "./pages/MyPage";
+import SettingPage from "./components/Home/SettingPage";
 import React from "react";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/Signup" element={<SignupPage />} />
+        <Route path="/SettingPage" element={<SettingPage />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/MakeRoom" element={<CreateRoomPage />} />
         <Route path="/FandomRoom/:index" element={<FandomRoomPage />} />

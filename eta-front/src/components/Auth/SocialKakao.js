@@ -1,6 +1,6 @@
 import KakaoLogin from "react-kakao-login";
 import KakaoBtn from "../../asset/img/Button_Kakao.svg";
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -25,15 +25,17 @@ const SocialKakao = () => {
       );
 
       if (response.data.message === "Sign In Success") {
-        navigate("../");
         console.log("Server Response:", response.data);
+        //로그인 성공 시, 로그인 후 메인 화면 이동
+        navigate("/SettingPage");
       } else {
         navigate("../Signup");
       }
     } catch (error) {
       console.error("Error sending login data:", error);
     }
-  };
+      };
+
   const kakaoOnFailure = (error) => {
     console.log(error);
   };
