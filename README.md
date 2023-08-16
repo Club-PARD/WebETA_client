@@ -15,7 +15,7 @@
 
 |  React    |  Axios  |  Styled-Component  | 
 | :--------: | :-------: | :-------: |
-|   ![ra]    |   ![ax]  |   ![sc]   |
+|   <img src='/readme/react.png' width='300'/>   |   <img src='/readme/axios.png' width='300'/>  |   <img src='/readme/styled_component.png' width='300'/>   |
 
 <br>
 
