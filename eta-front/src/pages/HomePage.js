@@ -86,11 +86,11 @@ function HomePage() {
   const content = [
     {
       tab: "홈",
-      content: userId !== null ? <BeforeHome /> : <AfterHome />,
+      content: userId === null ? <BeforeHome /> : <AfterHome />,
     },
     {
       tab: "커뮤니티",
-      content: userId !== null ? <BeforeCommunity /> : <AfterCommunity />,
+      content: userId === null ? <BeforeCommunity /> : <AfterCommunity />,
     },
   ];
 
@@ -100,7 +100,7 @@ function HomePage() {
     <HomePageComponent>
       <Row>
         <img src={logo} alt="EveryFandom Logo" />
-        {userId !== null ? (
+        {userId === null ? (
           <Link to={`/Login`}>
             <LoginButton>로그인</LoginButton>
           </Link>

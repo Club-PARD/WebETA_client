@@ -56,6 +56,7 @@ const images = [
   `url(${fandomBTS})`,
   `url(${fandom17_3})`,
   `url(${fandomIVE})`,
+  `url(${fandom17_1})`,
 ];
 
 const list = [

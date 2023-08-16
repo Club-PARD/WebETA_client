@@ -143,7 +143,7 @@ const Modal = styled(modal)`
   width: 343px;
   border-radius: 10px;
   background-color: #fff;
-  margin: 50% auto;
+  margin: 20% auto;
   padding: 24px;
 `;
 
@@ -165,6 +165,7 @@ const ModalButton = styled.button`
   font-size: 14px;
   font-weight: 700;
   border: none;
+  cursor: pointer;
 `;
 
 const BeforeHome = () => {
@@ -190,7 +191,12 @@ const BeforeHome = () => {
       <FandomRank>
         <Row style={{ justifyContent: "space-between" }}>
           <Title>🏆 팬덤 랭킹</Title>
-          <img src={join} alt="Join Button" onClick={openModal} />
+          <img
+            src={join}
+            alt="Join Button"
+            onClick={openModal}
+            style={{ cursor: "pointer" }}
+          />
           <Modal
             isOpen={isModalOpen}
             onRequestClose={closeModal}
