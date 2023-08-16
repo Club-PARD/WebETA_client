@@ -19,7 +19,7 @@
 
 <br>
 
-## 💽 자료구조
+## 🎄 project Structure
 
 ### user
     user_kakao_id (PK) (BIGINT)
