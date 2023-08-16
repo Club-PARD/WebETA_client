@@ -1,16 +1,12 @@
 import styled from "styled-components";
 import logo from "../asset/img/Logo.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { content, useTabs } from "../components/Home/useTabs";
+import { useTabs } from "../components/Home/useTabs";
 import profile from "../asset/img/Profile.svg";
-<<<<<<< HEAD
-import MyPage from "./MyPage";
-
-let currentUser = null;
-=======
-import axios from "axios";
-import { useEffect, useState } from "react";
->>>>>>> 7244b6be32f3caf60412c05469ba9c2293c0c3f2
+import BeforeHome from "../components/Home/BeforeHome";
+import AfterHome from "../components/Home/AfterHome";
+import BeforeCommunity from "../components/Home/BeforeCommunity";
+import AfterCommunity from "../components/Home/AfterCommunity";
 
 function HomePage() {
   const HomePageComponent = styled.div`
@@ -81,19 +77,27 @@ function HomePage() {
     }
   `;
 
-  const { currentItem, changeItem } = useTabs(0, content);
-<<<<<<< HEAD
-  const userId = {  userKakaoId: localStorage.getItem("userKakaoId")};
+  const userId = { userKakaoId: localStorage.getItem("userKakaoId") };
   const navigate = useNavigate();
-=======
-  const [currentUser, setCurrentUser] = useState(null);
->>>>>>> 7244b6be32f3caf60412c05469ba9c2293c0c3f2
+
+  const content = [
+    {
+      tab: "홈",
+      content: userId === null ? <BeforeHome /> : <AfterHome />,
+    },
+    {
+      tab: "커뮤니티",
+      content: userId === null ? <BeforeCommunity /> : <AfterCommunity />,
+    },
+  ];
+
+  const { currentItem, changeItem } = useTabs(0, content);
 
   return (
     <HomePageComponent>
       <Row>
         <img src={logo} alt="EveryFandom Logo" />
-        {currentUser !== null ? (
+        {userId === null ? (
           <Link to={`/Login`}>
             <LoginButton>로그인</LoginButton>
           </Link>
@@ -107,12 +111,12 @@ function HomePage() {
                   marginLeft: "4px",
                   fontSize: "14px",
                   fontWeight: "700",
-                  cursor: 'pointer',
-                  border: 'none',
-                  backgroundColor: 'transparent',
+                  cursor: "pointer",
+                  border: "none",
+                  backgroundColor: "transparent",
                 }}
-                onClick={() => navigate('/MyPage')}
-                >
+                onClick={() => navigate("/MyPage")}
+              >
                 {/* {userId} */}
                 조슈아가 나라다
               </button>

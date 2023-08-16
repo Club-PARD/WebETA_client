@@ -66,6 +66,10 @@ function FandomRoomDetail() {
   const { index } = useParams();
   const [board, setBoard] = useState({});
 
+  const onClickEnter = () => {
+    alert("준비중이옵니다.");
+  };
+
   useEffect(() => {
     const header = {
       Authorization: "Bearer " + localStorage.getItem("token"),
@@ -117,6 +121,7 @@ function FandomRoomDetail() {
         src={button_enter}
         alt="Enter Button"
         style={{ marginTop: "40px", cursor: "pointer" }}
+        onClick={onClickEnter}
       />
     </RoomDetailPageComponent>
   );
