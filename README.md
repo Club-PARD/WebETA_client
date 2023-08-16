@@ -48,70 +48,10 @@
   	├─Readme.md
  	└─package-lock.json
 
-## 📌 주요 기능
+## 🖼️ Preview
 
-###  🔗Auth
- <details markdown = "1">
-  <summary>로그인 : api/user/signIn  (POST)</summary>
-    <ul>
-      <li>Request body</li>
-      
-```json
-{
-	"userKakaoId" : "사용자의 카카오 아이디"
-	"kakaoAccessToken":"카카오가 발급하는 Token값"
-}
-```
-
-  <li>Response body </li>  
-
-```json
-      {
-    "result": true,
-    "message": "Sign In Success",
-    "data": {
-        "token": "JWT 토큰",
-        "exprTime": 3600000,
-        "user": {
-            "userKakaoId": "사용자의 카카오 아이디",
-            "userKakaoNickname": "사용자1",
-            "userAge": 25,
-            "userFanclub": "팬클럽A",
-            "userImage": null
-        }
-    }
-}      
-```
-
-  </ul>
- </details>
-  
- <details markdown = "1">
-  <summary>회원가입 : api/user/signUp  (POST)</summary>
-    <ul>
-      <li>Request body</li>
-      
-```json
-{
-    "userKakaoId" : "201806142",
-    "userKakaoNickname" : "김현승",
-    "userFanclub":"세븐틴",
-    "userImage" : "이미지"
-}
-```
-
-  <li>Response body </li>  
-
-```json
-{
-    "result": true,
-    "message": "Sign Up Success!",
-    "data": null
-}    
-```
-
-  </ul>
- </details>
+### HomePage
+ 
 
 ### 🔗 Board
 
