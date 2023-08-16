@@ -51,9 +51,9 @@
 ## 🖼️ Preview
 
 ### 🏠 HomePage
-	<img src='/readme/BeforeHome.png' width='200'/>
- 	<img src='/readme/BeforeHome2.png' width='200'/>
-  	<img src='/readme/AfterHome.png' width='200'/>   
+<img src='/readme/BeforeHome.png' width='200'/>
+<img src='/readme/BeforeHome2.png' width='200'/>
+<img src='/readme/AfterHome.png' width='200'/>   
 
 
 ### 🔗 Board
