@@ -1,4 +1,4 @@
-# WebETA_server
+# WebETA_client
 
 <p align="center">
   <br>
@@ -13,7 +13,7 @@
 
 ## ⚙️ 기술 스택
 
-|  Spring    |  AWS_EC2  |  Postman  | 
+|  React    |  Axios  |  Postman  | 
 | :--------: | :-------: | :-------: |
 |   ![sp]    |   ![ec2]  |   ![pm]   |
 
@@ -441,6 +441,6 @@
 
 <!-- Stack Icon Refernces -->
 
-[sp]: /readme/spring.png
-[ec2]: /readme/EC2.png
+[sp]: /readme/react.png
+[ec2]: /readme/axios.png
 [pm]: /readme/postman.png
