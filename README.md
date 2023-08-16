@@ -19,7 +19,7 @@
 
 <br>
 
-## 🎄 project Structure
+## 🎄 Project Structure
 
 	🔥 client🔥
 	├─public
