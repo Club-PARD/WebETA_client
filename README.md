@@ -50,17 +50,27 @@
 
 ## 🖼️ Preview
 
+<hr>
+
 ### 📄 HomePage
 <img src='/readme/BeforeHome.png' width='200'/>  <img src='/readme/BeforeHome2.png' width='200'/>  <img src='/readme/AfterHome.png' width='200'/>   
+
+<hr>
 
 ### 📄 CommunityPage
 <img src='/readme/BeforeCommunity.png' width='200'/>  <img src='/readme/BeforeCommunity2.png' width='200'/>  <img src='/readme/AfterCommunity.png' width='200'/>
 
+<hr>
+
 ### 📄 RankingPage
 <img src='/readme/Ranking.png' width='200'/>
 
+<hr>
+
 ### 📄 CreateRoomPage
 <img src='/readme/CreateRoom.png' width='200'/>  <img src='/readme/CreateRoom2.png' width='200'/>  <img src='/readme/CreateRoom3.png' width='200'/>
+
+<hr>
 
 ### 📄 RoomDetailPage
 <img src='/readme/RoomDetail.png' width='200'/>
