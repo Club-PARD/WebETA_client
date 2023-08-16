@@ -21,35 +21,35 @@
 
 ## 🎄 project Structure
 
-🔥 client🔥
-├─public
-│ ├─index.html (기본 HTML)
-│ └─favicon.ico (파비콘)
-├─src
-│ ├─assets (이미지, 폰트 등)
-│ ├─constants (상수, 라우트 경로)
-│ ├─styles (글로벌 스타일)
-│ ├─lib (리액트 라우터, styled-components)
-│ ├─components (컴포넌트 like view)
-│ ├─containers (like vm)
-│ ├─pages (페이지)
-│ ├─store (redux 모듈)
-│ ├─saga (saga 함수)
-│ ├─types (ts 공통 타입, 인터페이스)
-│ ├─hooks (커스텀 훅)
-│ ├─utils (공통 유틸 함수)
-│ │ └─api (api axios 요청)
-│ ├─index.tsx
-│ └─App.tsx
-├─config
-│ ├─webpack.common.js
-│ ├─webpack.dev.js
-│ └─webpack.prod.js
-├─package.json
-├─tsconfig.json
-├─jest.config.js
-├─.eslintrc.json
-└─.prettierrc
+	🔥 client🔥
+	├─public
+	│ ├─index.html (기본 HTML)
+	│ └─favicon.ico (파비콘)
+	├─src
+	│ ├─assets (이미지, 폰트 등)
+	│ ├─constants (상수, 라우트 경로)
+	│ ├─styles (글로벌 스타일)
+	│ ├─lib (리액트 라우터, styled-components)
+	│ ├─components (컴포넌트 like view)
+	│ ├─containers (like vm)
+	│ ├─pages (페이지)
+	│ ├─store (redux 모듈)
+	│ ├─saga (saga 함수)
+	│ ├─types (ts 공통 타입, 인터페이스)
+	│ ├─hooks (커스텀 훅)
+	│ ├─utils (공통 유틸 함수)
+	│ │ └─api (api axios 요청)
+	│ ├─index.tsx
+	│ └─App.tsx
+	├─config
+	│ ├─webpack.common.js
+	│ ├─webpack.dev.js
+	│ └─webpack.prod.js
+	├─package.json
+	├─tsconfig.json
+	├─jest.config.js
+	├─.eslintrc.json
+	└─.prettierrc
 
 ## 📌 주요 기능
 
