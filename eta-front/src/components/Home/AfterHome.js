@@ -140,10 +140,10 @@ const Description = styled.div`
 
 const AfterHome = () => {
   const [boardList, setBoardList] = useState([]);
-
+  
   useEffect(() => {
     const header = {
-      Authorization: "Bearer " + localStorage.getItem("token"),
+      Authorization: "Bearer " + "eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTIxNTMwNzAsImV4cCI6MTY5MjE1NjY3MH0.LCssow-iqEYL-G4XJb_OOqRs_tFej_pGnC_y-9HuSwTDqS4A5BlF_fCt-J6cQjMcEHQsG2DO8uEiHZTuULk4WA",
       "Content-Type": "application/json",
     };
     axios

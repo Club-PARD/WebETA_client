@@ -26,8 +26,10 @@ const Div = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     height: 100vh;
+    /* overflow: hidden; */
+
 `;
 
 const Header = styled.div`
@@ -111,7 +113,17 @@ const SaveButton = styled.img`
     width: 327px;
     height: 48px;
     margin-left: 26px;
+    margin-bottom: 16px;
     cursor: pointer;
+`;
+
+const LogoutButton = styled.button`
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    color: #ABABAB;
+    margin-bottom: 48px;
 `;
 
 function MyPage() {
@@ -152,6 +164,22 @@ function MyPage() {
         setUserNickname(e.target.value);
     };
 
+    const handleKakaoLogout = async () => {
+        try {
+            const response = await axios.post(
+              "http://3.34.188.69:8080/api/user/signIn", // 변경해야 할 부분
+              null,
+            );
+            localStorage.removeItem("userKakaoId" && "kakaoAccessToken");
+
+            console.log("Logout success:", response.status);
+            console.log(response.data)
+
+          } catch (error) {
+            console.error("Logout failed:", error);
+          }
+    };
+
     return (
         <DDiv>
             <Div>
@@ -183,11 +211,12 @@ function MyPage() {
                     <NicknameBox 
                     placeholder={userNickname}
                     maxLength="10"  
+                    onChange={onInputHandler}
                     />
-                    <EditBtn src={Edit} onChange={onInputHandler}/>
+                    <EditBtn src={Edit} />
                 </Header>
                 
-                <Count>{userNickname.length}/10</Count>
+                <Count>{inputCount}/10</Count>
             </Container>
             <Header>
                 <Header3>내 팬덤</Header3>
@@ -204,6 +233,10 @@ function MyPage() {
                 <img src={MyFan3} alt="MyFan3"/>
             </Header>
             <SaveButton src={SaveBtn} alt= "SaveBtn"/>
+            <LogoutButton onClick={handleKakaoLogout}>
+                로그아웃하기
+                <Link to ={"/"}/>
+                </LogoutButton>
             </Div>
         </DDiv>
     );

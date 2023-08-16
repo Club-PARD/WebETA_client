@@ -200,7 +200,11 @@ function Signup() {
         setCheckActive(!checkActive); 
     };
     const SignupSuccess = async (data)=>{
-
+        const [signupSuccess, setSignupSuccess] = useState(false);
+        localStorage.setItem("userKakaoNickname", data.response.userKakaoNickname);
+        localStorage.setItem("userFanclub", data.response.userFanclub);
+        localStorage.setItem("userImage", data.response.userImage);
+        
         const SignupData = {
             userKakaoId: localStorage.getItem("userKakaoId"), 
             userKakaoNickname: userNickname,
@@ -214,6 +218,7 @@ function Signup() {
             if (response.data.message === "Sign Up Success!"){
                 navigate ("../");
                 console.log("Server Response:", response.data);
+                setSignupSuccess(true);
             }
             else (
                 console.log("Signup Failed!")
@@ -320,6 +325,20 @@ function Signup() {
                 onMouseEnter={() => setImageSrc(Button_Start)} 
                 onMouseLeave={() => setImageSrc(Start_Inactive)}
             />
+            {SignupSuccess && (
+                    <img
+                        src={ToastMsg}
+                        alt="Sign Up Success Message"
+                        style={{
+                            position: "fixed",
+                            bottom: "20px",
+                            right: "20px",
+                            width: "50px",
+                            height: "50px",
+                            zIndex: 9999,
+                        }}
+                    />
+                )}
             </Div>        
             {isModalOpen && (
             <Overlay onClick={handleOverlayClick}>
