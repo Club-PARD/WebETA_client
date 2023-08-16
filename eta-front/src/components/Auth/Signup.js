@@ -272,9 +272,7 @@ function Signup() {
                     valueField="value"
                     labelField="label"
                     values={[{ value: userFanclub }]}
-
                     onChange={handleFandomSelect}
-                    //placeholder="팬덤을 선택해주세요."
                     selectedItemRenderer={({ item, props, state }) => (
                         <div {...props} style={{ ...props.style, color: '#1C1C1C', cursor: 'pointer' }}>
                             {item[props.labelField]}
@@ -288,7 +286,6 @@ function Signup() {
                         backgroundColor: '#FFFFFF',
                         fontSize: '14px',
                         color: '#ABABAB',
-                        paddingLeft: '16px',
                         alignItems: 'center',
                         marginLeft: '32px',
                         display: 'flex',
@@ -324,20 +321,7 @@ function Signup() {
                 onMouseEnter={() => setImageSrc(Button_Start)} 
                 onMouseLeave={() => setImageSrc(Start_Inactive)}
             />
-            {SignupSuccess && (
-                    <img
-                        src={ToastMsg}
-                        alt="Sign Up Success Message"
-                        style={{
-                            position: "fixed",
-                            bottom: "20px",
-                            right: "20px",
-                            width: "50px",
-                            height: "50px",
-                            zIndex: 9999,
-                        }}
-                    />
-                )}
+            
             </Div>        
             {isModalOpen && (
             <Overlay onClick={handleOverlayClick}>
